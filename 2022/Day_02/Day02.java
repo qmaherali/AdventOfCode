@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class Day02 {
 
+	public static long startTime = System.currentTimeMillis();
+	
 	public static void main(String[] args) throws FileNotFoundException {
 		
 		ArrayList<String> input = readFile("Dec2_2022.txt");
@@ -34,7 +36,7 @@ public class Day02 {
 		}
 		
 		int points = rocks + (papers*2) + (scissors*3) + (draws*3) + (wins*6);
-		System.out.println("Part 1: " + points);
+		System.out.println("Part 1: " + points + duration());
 		
 		
 		//Part 2
@@ -59,8 +61,14 @@ public class Day02 {
 		}
 		
 		points = rocks + (papers*2) + (scissors*3) + (draws*3) + (wins*6);
-		System.out.println("Part 2: " + points);
+		System.out.println("Part 2: " + points + duration());
+	}
+	
+	public static String duration() {
 		
+		long endTime = System.currentTimeMillis();
+		
+		return ("\tDuration: " + (endTime - startTime) + "ms");
 	}
 	
 	public static ArrayList<String> readFile (String fileName) throws FileNotFoundException {
@@ -73,9 +81,9 @@ public class Day02 {
 		while (scan.hasNext()) {
 			input.add(scan.nextLine());
 		}
-    
+		
 		scan.close();
+		
 		return input;
-    
 	}
 }
